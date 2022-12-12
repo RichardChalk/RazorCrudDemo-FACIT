@@ -10,8 +10,16 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Lägg till min DataInitializer med Dependency Injection
+builder.Services.AddTransient<DataInitializer>();
 
 var app = builder.Build();
+
+// Kör min SeedData() metod
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetService<DataInitializer>().SeedData();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
