@@ -18,7 +18,7 @@ var app = builder.Build();
 // Kör min SeedData() metod
 using (var scope = app.Services.CreateScope())
 {
-    scope.ServiceProvider.GetService<DataInitializer>().SeedData();
+    scope.ServiceProvider.GetService<DataInitializer>().MigrateData();
 }
 
 // Configure the HTTP request pipeline.
