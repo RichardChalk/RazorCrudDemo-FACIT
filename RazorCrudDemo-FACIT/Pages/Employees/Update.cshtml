@@ -1,9 +1,18 @@
 ﻿@page
 @model RazorCrudDemo_FACIT.Pages.Employees.UpdateModel
 @{
+    //Om ViewData är INTE null konverta till en sträng
+    var updateMessage = ViewData["Message"]?.ToString();
 }
 
 <h1 class="mb3">Update Employee</h1>
+
+@if (!string.IsNullOrWhiteSpace(updateMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @updateMessage
+    </div>
+}
 
 <form method="post">
     @*Id ska INTE editers!*@

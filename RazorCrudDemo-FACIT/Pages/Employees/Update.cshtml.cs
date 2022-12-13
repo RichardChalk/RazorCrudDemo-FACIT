@@ -47,6 +47,8 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
                 employeeToUpdateDB.Department = UpdateEmployeeVM.Department;
 
                 _dbContext.SaveChanges();
+
+                ViewData["Message"] = "Employee updated successfully!";
             }
         }
     }
