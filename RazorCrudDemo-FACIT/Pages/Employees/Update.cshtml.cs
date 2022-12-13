@@ -33,5 +33,21 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
                 };
             }
         }
+        public void OnPost()
+        {
+            var employeeToUpdate = _dbContext.Employees.Find(UpdateEmployee.Id);
+
+            if (ModelState.IsValid)
+            {
+                // Mappar från ViewModel till DB Model
+                employeeToUpdate.Name = UpdateEmployee.Name;
+                employeeToUpdate.Email = UpdateEmployee.Email;
+                employeeToUpdate.Salary = UpdateEmployee.Salary;
+                employeeToUpdate.DateOfBirth = UpdateEmployee.DateOfBirth;
+                employeeToUpdate.Department = UpdateEmployee.Department;
+
+                _dbContext.SaveChanges();
+            }
+        }
     }
 }
