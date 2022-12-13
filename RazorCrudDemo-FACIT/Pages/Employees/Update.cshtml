@@ -46,9 +46,24 @@
         <input type="text" class="form-control" asp-for="UpdateEmployeeVM.Department" />
     </div>
 
-    <div class="mb-3">
-        <button type="submit" class="btn btn-primary">
+    <div class="mb-3 d-flex justify-content-center">
+        <button type="submit"
+                class="btn btn-primary mx-1"
+                style="width:120px">
             Update
         </button>
+
+        <button type="submit"
+                class="btn btn-danger mx-1"
+                style="width:120px"
+                asp-page-handler="Delete">
+            Delete
+        </button>
+
+        <a asp-page="Read"
+           class="btn btn-secondary mx-1"
+           style="width:120px">
+            Back to List
+        </a>
     </div>
 </form>
