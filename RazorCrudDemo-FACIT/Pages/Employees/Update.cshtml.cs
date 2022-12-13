@@ -54,7 +54,7 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
 
         public IActionResult OnPostDelete()
         {
-            var employeeToDeleteDB = _dbContext.Employees.Find(UpdateEmployee.Id);
+            var employeeToDeleteDB = _dbContext.Employees.Find(UpdateEmployeeVM.Id);
 
             if (employeeToDeleteDB != null)
             {
