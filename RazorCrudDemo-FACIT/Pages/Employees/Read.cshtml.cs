@@ -17,7 +17,6 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
         {
             Employees = _dbContext.Employees.ToList();
         }
-
     }
 
 }
