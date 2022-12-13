@@ -34,6 +34,8 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
 
             dbContext.Employees.Add(employeeDbModel);
             dbContext.SaveChanges();
+
+            ViewData["Message"] = "Employee created successfully!";
         }
 
     }
