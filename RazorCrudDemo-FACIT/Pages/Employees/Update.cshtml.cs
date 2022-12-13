@@ -51,5 +51,21 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
                 ViewData["Message"] = "Employee updated successfully!";
             }
         }
+
+        public IActionResult OnPostDelete()
+        {
+            var employeeToDeleteDB = _dbContext.Employees.Find(UpdateEmployee.Id);
+
+            if (employeeToDeleteDB != null)
+            {
+                _dbContext.Employees.Remove(employeeToDeleteDB);
+                _dbContext.SaveChanges();
+
+                return RedirectToPage("/Employees/Read");
+            }
+
+            return Page();
+        }
+
     }
 }
