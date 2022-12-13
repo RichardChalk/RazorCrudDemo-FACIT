@@ -7,6 +7,7 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
     public class ReadModel : PageModel
     {
         private readonly ApplicationDbContext _dbContext;
+        public List<Employee> Employees { get; set; }
 
         public ReadModel(ApplicationDbContext dbContext)
         {
@@ -14,7 +15,9 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
         }
         public void OnGet()
         {
+            Employees = _dbContext.Employees.ToList();
         }
+
     }
 
 }
