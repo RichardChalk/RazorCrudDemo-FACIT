@@ -8,7 +8,7 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
     public class UpdateModel : PageModel
     {
         [BindProperty]
-        public UpdateEmployeeViewModel UpdateEmployee { get; set; }
+        public UpdateEmployeeViewModel UpdateEmployeeVM { get; set; }
 
         private readonly ApplicationDbContext _dbContext;
 
@@ -18,33 +18,33 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
         }
         public void OnGet(Guid id)
         {
-            var employee = _dbContext.Employees.Find(id);
+            var employeeDB = _dbContext.Employees.Find(id);
 
-            if (employee != null)
+            if (employeeDB != null)
             {
-                UpdateEmployee = new UpdateEmployeeViewModel()
+                UpdateEmployeeVM = new UpdateEmployeeViewModel()
                 {
-                    Id = employee.Id,
-                    Name = employee.Name,
-                    Email = employee.Email,
-                    DateOfBirth = employee.DateOfBirth,
-                    Salary = employee.Salary,
-                    Department = employee.Department
+                    Id = employeeDB.Id,
+                    Name = employeeDB.Name,
+                    Email = employeeDB.Email,
+                    DateOfBirth = employeeDB.DateOfBirth,
+                    Salary = employeeDB.Salary,
+                    Department = employeeDB.Department
                 };
             }
         }
         public void OnPost()
         {
-            var employeeToUpdate = _dbContext.Employees.Find(UpdateEmployee.Id);
+            var employeeToUpdateDB = _dbContext.Employees.Find(UpdateEmployeeVM.Id);
 
             if (ModelState.IsValid)
             {
                 // Mappar från ViewModel till DB Model
-                employeeToUpdate.Name = UpdateEmployee.Name;
-                employeeToUpdate.Email = UpdateEmployee.Email;
-                employeeToUpdate.Salary = UpdateEmployee.Salary;
-                employeeToUpdate.DateOfBirth = UpdateEmployee.DateOfBirth;
-                employeeToUpdate.Department = UpdateEmployee.Department;
+                employeeToUpdateDB.Name = UpdateEmployeeVM.Name;
+                employeeToUpdateDB.Email = UpdateEmployeeVM.Email;
+                employeeToUpdateDB.Salary = UpdateEmployeeVM.Salary;
+                employeeToUpdateDB.DateOfBirth = UpdateEmployeeVM.DateOfBirth;
+                employeeToUpdateDB.Department = UpdateEmployeeVM.Department;
 
                 _dbContext.SaveChanges();
             }
