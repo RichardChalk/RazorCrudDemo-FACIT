@@ -7,6 +7,7 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
     public class ReadModel : PageModel
     {
         private readonly ApplicationDbContext _dbContext;
+        public string ShortDate { get; set; }
 
         public List<Employee> Employees { get; set; }
 
@@ -17,6 +18,8 @@ namespace RazorCrudDemo_FACIT.Pages.Employees
         public void OnGet()
         {
             Employees = _dbContext.Employees.ToList();
+            var date = DateTime.UtcNow;
+            ShortDate = date.ToShortDateString();
         }
     }
 
