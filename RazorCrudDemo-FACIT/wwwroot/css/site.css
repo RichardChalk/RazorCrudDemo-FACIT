@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/*Övning 6*/
+.bg {
+    min-height: 85vh;
+}
